@@ -22,12 +22,9 @@ rho_r = density(r)
 
 plt.figure(figsize=(10, 6))
 plt.loglog(r, rho_r)
-plt.figure(figsize=(10, 6))
-plt.loglog(r, rho_r)
 plt.xlabel('Distance from the center of the Milky Way r (light-years)')
 plt.ylabel('Density ρ(r) (stars/(light-year)^3)')
 plt.title('Numpy and Matplot were used to make the graph. Code is at https://github.com/Geo-sudo/Astrophysics/')
 plt.grid(True, which="both", ls="--")
 plt.show()
-
 
