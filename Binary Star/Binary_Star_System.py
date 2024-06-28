@@ -1,5 +1,6 @@
 import turtle
 import math
+import os
 
 class BinarySystemBody(turtle.Turtle):
     minDisplaySize = 20
@@ -75,3 +76,11 @@ class BinarySystem:
             acc_y = acc * math.sin(angle)
             body.velocity = (body.velocity[0] + (reverse*acc_x), body.velocity[1] + (reverse*acc_y))
             reverse = -1  
+    def save_frame(self, filename):
+        frames_dir = "frames"
+        if not os.path.exists(frames_dir):
+            os.makedirs(frames_dir)
+
+        frames = os.path.join(frames_dir,filename)
+        canvas = self.Binary_System.getcanvas()
+        canvas.postscript(file=frames)
