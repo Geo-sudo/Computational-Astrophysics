@@ -6,4 +6,4 @@ Ello! This is a (very) basic astrophysical simulation of a binary star system. D
 
 # Code
 
-The simulation is written in Python using the matplotlib library, and all the calcualtions are done using math.
+The simulation is written in Python using the turtle library, and all the calcualtions are done using math.
