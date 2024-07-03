@@ -1,10 +1,12 @@
 import matplotlib.pyplot as plt
 from Binary_System import BinarySystem, Body
 
-binary_system = BinarySystem(400)
+binary_system = BinarySystem(1000)
 
-body = Body(binary_system, 100, velocity=(1,1,1))
+star1 = Body(binary_system, 500000)
+star2 = Body(binary_system, 50, position=(50,0,500), velocity=(0,25,5))
 
-for _ in range(100):
+while True:
+    binary_system.calc_gravity()
     binary_system.update_all()
     binary_system.draw_all()
