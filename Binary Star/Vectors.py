@@ -12,6 +12,9 @@ class Vector:
     def __repr__(self):
         return f"Vector({self.x}, {self.y}, {self.z})"
     
+    def __iter__(self):
+        return iter((self.x,self.y,self.z))
+    
     def __getitem__(self, it):
         if it == 0:
             return self.x
