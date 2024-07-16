@@ -1,4 +1,3 @@
-import math
 from Vectors import Vector
 import matplotlib.pyplot as plt
 import numpy as np
@@ -27,7 +26,6 @@ class BinarySystem:
         self.bodies.sort(key=lambda item: item.position[0])
         for body in self.bodies:
             body.move()
-            body.draw()
 
     def draw_all(self):
         self.ax.set_xlim([-self.size/2, self.size/2])
@@ -43,6 +41,9 @@ class BinarySystem:
         self.ax.set_xticklabels(self.tick_labels['x'])
         self.ax.set_yticklabels(self.tick_labels['y'])
         self.ax.set_zticklabels(self.tick_labels['z'])
+
+        for body in self.bodies:
+            body.draw()
     
     def calc_gravity(self):
         for it, first in enumerate(self.bodies):
@@ -71,6 +72,21 @@ class Body:
 
         self.binary_system.add_body(self)
 
+        self.plot, = self.binary_system.ax.plot(
+            [self.position.x], [self.position.y], [self.position.z],
+            marker="o",
+            markersize=self.display_size,
+            color=self.colour,
+            zorder=2
+        )
+        self.shadow, = self.binary_system.ax.plot(
+            [self.position.x], [self.position.y], [-self.binary_system.size / 2],
+            marker="o",
+            markersize=self.display_size / 2,
+            color=(.5, .5, .5),
+            zorder=1
+        )
+
     def move(self):
         self.position += (self.velocity * self.binary_system.dt)
     
@@ -78,7 +94,7 @@ class Body:
         self.binary_system.ax.plot(
             *self.position,
             marker="o",
-            markersize=self.display_size + self.position[0]*5,
+            markersize=self.display_size + self.position[0]/30,
             color=self.colour,
             zorder = 2
         )
