@@ -104,4 +104,4 @@ And the position is calculated in the same fashion by multiplying the computed v
 
 <br><br>
 
-<div style="text-align: center; font-family: bold; font-weight: bold;">Made with ❤️ by <a href="https://github.com/Geo-sudo">Geo</a>. <br> Live Life!</div>
+<p style="text-align: center; font-family: bold; font-weight: bold;">Made with ❤️ by <a href="https://github.com/Geo-sudo">Geo</a>. <br> Live Life!</p>
