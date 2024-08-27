@@ -53,7 +53,7 @@ We see it as one source of light because of the massive distance between us and 
 # The Physics
 
 > The used units are AU, M0, and days for L, M, and T, respectively. <br>
-All of the physics are calculated using linear algebra as defined in [`Vectors.py`](Vectors.py).
+> All of the physics is calculated using linear algebra as defined in [`Vectors.py`](Vectors.py).
 
 
 A Lagrangian method is used to calculate the position of each body based on the forces of gravity inflicted by the surrounding bodies' mass and its mass in discrete timesteps `dt`. 
@@ -89,7 +89,7 @@ Then, the during each timestep the change in velocity done by the forces of grav
 4. Then, the force vector is [computed](Binary_System.py#L116) by normalizing the relative path and multiplying it by the norm of the force, since the direction of the forces is colinear with the relative path along the centers of the bodies, as shown in Figure 3.
 
 <figure style="text-align: center;">
-  <img src="Gravity, Baby.png" width="300" alt="Representation of Newton's Law of Universal Gravitation">
+  <img src="https://i.ibb.co/6NF0fDw/Gravity-Baby.png" width="300" alt="Representation of Newton's Law of Universal Gravitation">
   <figcaption style="text-align: center;">Figure 3: Representation of Newton's Law of Universal Gravitation. By GeeksforGeeks, 2024.</figcaption>
 </figure>
 
