@@ -43,8 +43,7 @@ We see it as one source of light because of the massive distance between us and 
 </figure>
 
 
-<br>
-The way to detect these is by using precise equipment that can detect the faintest of brightness changes over time (see the image below) caused by eclipses. If the lumnisoity of the star changes *periodically*, then it's a star system. Further carefull analysis of the lumnisotiy over time graph will tell us if it's a Binary Star System or if it's a bigger party of "fireballs."
+<br>The way to detect these is by using precise equipment that can detect the faintest of brightness changes over time (see the image below) caused by eclipses. If the lumnisoity of the star changes *periodically*, then it's a star system. Further carefull analysis of the lumnisotiy over time graph will tell us if it's a Binary Star System or if it's a bigger party of "fireballs."
 
 <figure style="text-align: center;">
   <img src="https://upload.wikimedia.org/wikipedia/commons/0/0d/Light_curve_of_binary_star_Kepler-16.jpg" alt="Light curve of binary star Kepler-16" width="500">
