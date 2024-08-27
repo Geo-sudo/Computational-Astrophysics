@@ -42,8 +42,8 @@ We see it as one source of light because of the massive distance between us and 
   <figcaption>Figure 1: Artist's impression of the binary star system AR Scorpii. By M. Garlick/University of Warwick/ESO - <a href="http://www.eso.org/public/images/eso1627a/">ESO</a>, CC BY 4.0.</figcaption>
 </figure>
 
-<br>
 
+<br>
 The way to detect these is by using precise equipment that can detect the faintest of brightness changes over time (see the image below) caused by eclipses. If the lumnisoity of the star changes *periodically*, then it's a star system. Further carefull analysis of the lumnisotiy over time graph will tell us if it's a Binary Star System or if it's a bigger party of "fireballs."
 
 <figure style="text-align: center;">
