@@ -102,3 +102,6 @@ Then, the during each timestep the change in velocity done by the forces of grav
 6. Finally, the velocity of the body is computed by multiplying the calculated acceleration "`acc`" and the set timestep "`dt`". 
 And the position is calculated in the same fashion by multiplying the computed velocity by the timestep, which is then mapped using the [`draw()`](Binary_System.py#L46) function in `matplotlib`.
 
+<br><br>
+
+<div style="text-align: center; font-family: bold; font-weight: bold;">Made with ❤️ by <a href="https://github.com/Geo-sudo">Geo</a>. <br> Live Life!</div>
