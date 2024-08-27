@@ -74,7 +74,7 @@ $$\hat{r}_{21} = \frac{\vec{r}_1 - \vec{r}_2}{|\vec{r}_1 - \vec{r}_2|}$$
 
 
 3. The norm of the force of gravity is then [evaluated](Binary_System.py#L115) using Newton's Law of Universal Gravitation: <br>
-$$\vec{F}_{12} = -G \frac{m_1 m_2}{r_{21}^2} \hat{r}_{21}$$
+$$ \vec{F}_{12} = -G \frac{m_1 m_2}{r_{21}^2} \hat{r}_{21} $$
 
 
 4. Then, the force vector is [computed](Binary_System.py#L116) by normalizing the relative path and multiplying it by the norm of the force, since the direction of the forces is colinear with the relative path along the centers of the bodies, as shown in Figure 3.
