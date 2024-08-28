@@ -40,7 +40,7 @@ We see it as one source of light because of the massive distance between us and 
 <figure>
   <p align="center" width="100%">
   <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/8b/This_artist’s_impression_shows_the_strange_object_AR_Scorpii.jpg/800px-This_artist’s_impression_shows_the_strange_object_AR_Scorpii.jpg" alt="Artist's impression of the binary star system AR Scorpii" width="50%">
-  <figcaption>Figure 1: Artist's impression of the binary star system AR Scorpii. By M. Garlick/University of Warwick/ESO - <a href="http://www.eso.org/public/images/eso1627a/">ESO</a>, CC BY 4.0.</figcaption>
+  <figcaption align="center">Figure 1: Artist's impression of the binary star system AR Scorpii. By M. Garlick/University of Warwick/ESO - <a href="http://www.eso.org/public/images/eso1627a/">ESO</a>, CC BY 4.0.</figcaption>
   </p>
 </figure>
 
@@ -50,7 +50,7 @@ We see it as one source of light because of the massive distance between us and 
 <figure>
   <p align="center" width="100%">
   <img src="https://upload.wikimedia.org/wikipedia/commons/0/0d/Light_curve_of_binary_star_Kepler-16.jpg" alt="Light curve of binary star Kepler-16" width="50%">
-  <figcaption style="text-align: center;">Figure 2: Light curve of binary star Kepler-16. By NASA, 2013.</figcaption>
+  <figcaption align="center">Figure 2: Light curve of binary star Kepler-16. By NASA, 2013.</figcaption>
   </p>
   <br>
 </figure>
@@ -96,7 +96,7 @@ Then, the during each timestep the change in velocity done by the forces of grav
 <figure>
 <p align="center" width="100%">
   <img src="https://i.ibb.co/6NF0fDw/Gravity-Baby.png" width="40%" alt="Representation of Newton's Law of Universal Gravitation">
-  <figcaption style="text-align: center;">Figure 3: Representation of Newton's Law of Universal Gravitation. By GeeksforGeeks, 2024.</figcaption>
+  <figcaption align="center">Figure 3: Representation of Newton's Law of Universal Gravitation. By GeeksforGeeks, 2024.</figcaption>
   </p>
   <br>
 </figure>
