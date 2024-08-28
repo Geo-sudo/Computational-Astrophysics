@@ -37,17 +37,21 @@ The simulation has two modes: *viewing* and *saving*. `save=False` allows you to
 Did you know that **Sirius** the brightes "star" in the nightsky isn't a star! It's a Binary Star System: two stars that are graviationally bound together ([Read More](https://en.wikipedia.org/wiki/Binary_star)). <br>
 We see it as one source of light because of the massive distance between us and the star; when you look at your LED light bulb you don't see each LED, but you see their light as one source.
 
-<figure style="text-align: center;">
-  <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/8b/This_artist’s_impression_shows_the_strange_object_AR_Scorpii.jpg/800px-This_artist’s_impression_shows_the_strange_object_AR_Scorpii.jpg" alt="Artist's impression of the binary star system AR Scorpii" width="500">
+<figure>
+  <p align="center" width="100%">
+  <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/8b/This_artist’s_impression_shows_the_strange_object_AR_Scorpii.jpg/800px-This_artist’s_impression_shows_the_strange_object_AR_Scorpii.jpg" alt="Artist's impression of the binary star system AR Scorpii" width="50%">
   <figcaption>Figure 1: Artist's impression of the binary star system AR Scorpii. By M. Garlick/University of Warwick/ESO - <a href="http://www.eso.org/public/images/eso1627a/">ESO</a>, CC BY 4.0.</figcaption>
+  </p>
 </figure>
 
 
 <br>The way to detect these is by using precise equipment that can detect the faintest of brightness changes over time (see the image below) caused by eclipses. If the lumnisoity of the star changes *periodically*, then it's a star system. Further carefull analysis of the lumnisotiy over time graph will tell us if it's a Binary Star System or if it's a bigger party of "fireballs."
 
-<figure style="text-align: center;">
-  <img src="https://upload.wikimedia.org/wikipedia/commons/0/0d/Light_curve_of_binary_star_Kepler-16.jpg" alt="Light curve of binary star Kepler-16" width="500">
+<figure>
+  <p align="center" width="100%">
+  <img src="https://upload.wikimedia.org/wikipedia/commons/0/0d/Light_curve_of_binary_star_Kepler-16.jpg" alt="Light curve of binary star Kepler-16" width="50%">
   <figcaption style="text-align: center;">Figure 2: Light curve of binary star Kepler-16. By NASA, 2013.</figcaption>
+  </p>
   <br>
 </figure>
 
@@ -89,9 +93,11 @@ Then, the during each timestep the change in velocity done by the forces of grav
 
 4. Then, the force vector is [computed](Binary_System.py#L116) by normalizing the relative path and multiplying it by the norm of the force, since the direction of the forces is colinear with the relative path along the centers of the bodies, as shown in Figure 3.
 
-<figure style="text-align: center;">
-  <img src="https://i.ibb.co/6NF0fDw/Gravity-Baby.png" width="300" alt="Representation of Newton's Law of Universal Gravitation">
+<figure>
+<p align="center" width="100%">
+  <img src="https://i.ibb.co/6NF0fDw/Gravity-Baby.png" width="40%" alt="Representation of Newton's Law of Universal Gravitation">
   <figcaption style="text-align: center;">Figure 3: Representation of Newton's Law of Universal Gravitation. By GeeksforGeeks, 2024.</figcaption>
+  </p>
   <br>
 </figure>
 
@@ -104,4 +110,4 @@ And the position is calculated in the same fashion by multiplying the computed v
 
 <br><br>
 
-<p style="text-align: center; font-family: bold; font-weight: bold;">Made with ❤️ by <a href="https://github.com/Geo-sudo">Geo</a>. <br> Live Life!</p>
+**Made with ❤️ by [Geo](https://github.com/Geo-sudo). <br> Live Life!**
