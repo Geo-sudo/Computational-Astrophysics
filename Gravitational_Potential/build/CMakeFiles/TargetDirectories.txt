@@ -1,3 +1,0 @@
-/home/geo/Desktop/Astrophysics/Computational-Astrophysics/Gravitational_Potential/build/CMakeFiles/Gravitational_Potential.dir
-/home/geo/Desktop/Astrophysics/Computational-Astrophysics/Gravitational_Potential/build/CMakeFiles/edit_cache.dir
-/home/geo/Desktop/Astrophysics/Computational-Astrophysics/Gravitational_Potential/build/CMakeFiles/rebuild_cache.dir
