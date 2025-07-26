@@ -3,70 +3,114 @@
 #include <iostream>
 #include <vector>
 #include <cmath>
+#include <glm/glm.hpp>
+using std::cout;
+using std::endl;
+using std::vector;
+using glm::dvec2;
+using glm::dot;
+using glm::normalize;
+
+const double G = 6.67430e-11f; // m³·kg⁻¹·s⁻²
+const double scale_factor = 1.0/(1.1*1.496e11); // AU⁻¹
+const float dt = 86400.0f; // seconds·frame⁻¹
 
 
 class Body {
 public:
-    float pos_X,pos_Y,pos_Z=0;
-    float vel_X,vel_Y,vel_Z=0;
-    float radius;
+    dvec2 position;
+    dvec2 velocity;
+    double radius, mass;
     int segments;
-    std::vector<float> vertices;
+    vector<float> vertices;
+    vector<float> color;
 
-    Body(float x_, float y_, /*float z_,*/ float vel_x_, float vel_y_, /*float vel_z_,*/ float radius_, int segments_){
-        pos_X=x_; pos_Y=y_; /*pos_Z=z_;*/ vel_X=vel_x_; vel_Y=vel_y_; /*vel_Z=vel_z_;*/ radius=radius_; segments = segments_;
+    Body(double x_, double y_, double vel_x_, double vel_y_, double mass_, double radius_, int segments_, vector<float> color_ = {1.0f, 1.0f, 1.0f}){
+        position[0]=x_; position[1]=y_; velocity[0]=vel_x_; velocity[1]=vel_y_; mass = mass_; radius=radius_; segments = segments_; color=color_;
         vertices = genCircle(segments);
     }
 
-    std::vector<float> genCircle(int segments){
-    std::vector<float> vertices;
-    vertices.push_back(0.0f);
-    vertices.push_back(0.0f);
-    vertices.push_back(0.0f);
-    for(int i=0; i <= segments; i++){
-        float angle = 2.0f * M_PI * float(i)/float(segments);
-        vertices.push_back(cosf(angle)); 
-        vertices.push_back(sinf(angle));
+    vector<float> genCircle(int segments){
+        vector<float> vertices;
         vertices.push_back(0.0f);
+        vertices.push_back(0.0f);
+        vertices.push_back(0.0f);
+        for(int i=0; i <= segments; i++){
+            float angle = 2.0f * M_PI * float(i)/float(segments);
+            vertices.push_back(cosf(angle)); 
+            vertices.push_back(sinf(angle));
+            vertices.push_back(0.0f);
     }
-    
     return vertices;
-    }
-
-    void update_parameters(float dt){
-        pos_X += vel_X * dt;
-        pos_Y += vel_Y * dt;
-        if (pos_X + radius > 1.0f || pos_X - radius < -1.0f) {vel_X = -vel_X;}
-        if (pos_Y + radius > 1.0f || pos_Y - radius < -1.0f) {vel_Y = -vel_Y;}
     }
 
     void render(GLuint shaderProgram){
         GLint radiusLoc = glGetUniformLocation(shaderProgram, "radius");
         GLint offsetLoc = glGetUniformLocation(shaderProgram, "offset");
-        glUniform2f(offsetLoc, pos_X, pos_Y);
-        glUniform1f(radiusLoc, radius);
+        GLint colorLoc = glGetUniformLocation(shaderProgram, "bodyColor");
+
+        float scaledRadius = static_cast<float>(radius);
+        float scaled_X = static_cast<float>(position[0] * scale_factor);
+        float scaled_Y = static_cast<float>(position[1] * scale_factor);
+
+        glUniform2f(offsetLoc, scaled_X, scaled_Y);
+        glUniform1f(radiusLoc, scaledRadius);
+        glUniform3fv(colorLoc, 1, color.data());
     }
 
 };
 
+void gravitas(vector<Body>& bodies, float dt){
+    vector<dvec2> accelerations(bodies.size());
+
+    for(size_t i=0; i < bodies.size(); ++i){
+        dvec2 acc(0.0);
+        for(size_t j=0; j < bodies.size(); ++j){
+            if (i==j) {continue;}
+            dvec2 r = bodies[j].position - bodies[i].position;
+            double r_2 = dot(r,r);
+            double F;
+            if (r_2==0){F = (G * bodies[j].mass) /1e-6;}
+            else {F = (G * bodies[j].mass) / r_2;}
+            acc += F * normalize(r);
+        }
+        accelerations[i] = acc;
+    }
+
+    for(size_t i=0; i < bodies.size(); ++i){
+        bodies[i].velocity += accelerations[i] * static_cast<double>(dt);
+        bodies[i].position += bodies[i].velocity * static_cast<double>(dt);
+    }
+
+}
+
+vector<Body> inputBodies(){
+    vector<Body> bodies;
+    vector<float> yellow = {1.0f, 1.0f, 0.0f}, blue = {0.0f, 0.5f, 1.0f};
+    //set the radii based on a ratio between them with a lower boundary 
+    auto body1 = Body(0.0, 0.0, 0.0, 0.0, 1.989e30, 0.3, 100, yellow); //6.9634e8
+    auto body2 = Body(1.496e11, 0.0, 0.0, 29780.0, 5.972e24, 0.1, 100, blue); //6.371e6
+    
+    bodies.emplace_back(body1);
+    bodies.emplace_back(body2);
+
+    return bodies;
+}
+
 int main() {
 
-    auto UnitCircle = Body(0.0f, 0.0f, 0.0f, 0.0f, 1.0f, 100);
-    auto object1 = Body(0.0f, 0.5f, 1.3f, 2.1f, 0.2f, 100);
-    auto object2 = Body(0.3f, -0.2f, 1.0f, -1.5f, 0.1f, 100);
-    std::vector<Body> objects;
-    objects.emplace_back(object1);
-    objects.emplace_back(object2);
+    auto UnitCircle = Body(0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 1.0f, 100);
+    vector<Body> bodies = inputBodies();
 
     glfwInit();
     glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 3);
     glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 3);
     glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
 
-    GLFWwindow* window = glfwCreateWindow(800, 600, "Gravitational_Potential", NULL, NULL);
+    GLFWwindow* window = glfwCreateWindow(850, 650, "Gravitational_Potential", NULL, NULL);
     if(window == NULL)
     {
-        std::cout << "Failed to create GLFW window" << std::endl;
+        cout << "Failed to create GLFW window" << endl;
         glfwTerminate();
         return -1;
     }
@@ -74,7 +118,7 @@ int main() {
     glfwSwapInterval(1);
 
     if (glewInit() != GLEW_OK) {
-    std::cout << "Failed to initialize GLEW" << std::endl;
+    cout << "Failed to initialize GLEW" << endl;
     return -1;
     };
 
@@ -107,8 +151,9 @@ int main() {
 
     const char* fragmentShaderSource = "#version 330 core\n"
     "out vec4 FragColor;\n"
+    "uniform vec3 bodyColor;\n"
     "void main() {\n"
-    "   FragColor = vec4(.1, 0.8, 0.2, 1.0);\n"
+    "   FragColor = vec4(bodyColor, 1.0);\n"
     "}";
 
     unsigned int fragmentShader = glCreateShader(GL_FRAGMENT_SHADER);
@@ -123,18 +168,13 @@ int main() {
     glDeleteShader(vertexShader);
     glDeleteShader(fragmentShader);
 
-    float dt=0,lastFrame=0;
-
-
     while(!glfwWindowShouldClose(window))
     {
         glClear(GL_COLOR_BUFFER_BIT);
 
         glUseProgram(shaderProgram);
 
-        float currentFrame = glfwGetTime();
-        dt = currentFrame - lastFrame;
-        lastFrame = currentFrame;
+        //add fps counter, make dt adjustable mid-simulation
         
 
         int width, height;
@@ -145,10 +185,11 @@ int main() {
 
         glBindVertexArray(VAO);
 
-        for (auto& object : objects) {
-            object.update_parameters(dt);
-            object.render(shaderProgram);
-            glDrawArrays(GL_TRIANGLE_FAN, 0, object.vertices.size() / 3);
+        gravitas(bodies, dt);
+
+        for (auto& body : bodies) {
+            body.render(shaderProgram);
+            glDrawArrays(GL_TRIANGLE_FAN, 0, body.vertices.size() / 3);
         }
 
         glfwPollEvents();
